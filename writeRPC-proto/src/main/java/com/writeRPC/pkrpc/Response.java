@@ -2,7 +2,7 @@ package com.writeRPC.pkrpc;
 
 import lombok.Data;
 
-/*表示相应*/
+/*表示回应*/
 @Data
 public class Response {
     private int code;//判断返回是否成功 0-成功

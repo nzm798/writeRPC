@@ -6,7 +6,8 @@ import com.writeRPC.pkrpc.Peer;
 import java.util.List;
 
 /**
- * 表示选择那个server去连接
+ * 表示选择那个server去连接，
+ * 连接选择接口
  */
 public interface TransportSelector {
     /**

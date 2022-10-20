@@ -12,27 +12,28 @@ public class ReflectionUtils {
      * 根据class创建对象
      *
      * @param clazz 待创建的对象
+     * @param <T>   对象类型
      * @return 创建好的对象
-     * @param <T> 对象类型
      */
-    public static <T> T newInstance(Class<T> clazz){
+    public static <T> T newInstance(Class<T> clazz) {
         try {
-            return clazz.newInstance();
-        }catch (Exception e){
+            return clazz.newInstance(); //返回创建的实例
+        } catch (Exception e) {
             throw new IllegalStateException(e);
         }
     }
 
     /**
      * 获取class的共有方法
+     *
      * @param clazz
      * @return 当前类声明的共有方法
      */
-    public static Method[] getPublicMethods(Class clazz){
-        Method[] methods=clazz.getDeclaredMethods();//获得类中的所有方法
-        List<Method> pmethods=new ArrayList<Method>();
-        for(Method m:methods){
-            if(Modifier.isPublic(m.getModifiers())){//筛选出来public的方法
+    public static Method[] getPublicMethods(Class clazz) {
+        Method[] methods = clazz.getDeclaredMethods();//获得类中的所有方法
+        List<Method> pmethods = new ArrayList<Method>();
+        for (Method m : methods) {
+            if (Modifier.isPublic(m.getModifiers())) {//筛选出来public的方法
                 pmethods.add(m);
             }
         }
@@ -42,14 +43,14 @@ public class ReflectionUtils {
     /**
      * 调用指定对象的指定方法
      *
-     * @param obj 被调用方法的对象
+     * @param obj    被调用方法的对象
      * @param method 被调用的方法
-     * @param args 方法的参数
+     * @param args   方法的参数
      * @return 返回结果
      */
-    public static  Object invoke(Object obj, Method method,Object... args){
+    public static Object invoke(Object obj, Method method, Object... args) {
         try {
-            return method.invoke(obj,args);//
+            return method.invoke(obj, args);//
         } catch (Exception e) {
             throw new IllegalStateException(e);
         }

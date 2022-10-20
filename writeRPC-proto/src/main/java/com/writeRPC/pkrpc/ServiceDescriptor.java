@@ -8,21 +8,22 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 
 /*
- * 表示服务*/
+ * 表示服务，服务描述
+ * */
 @Data//生成数据操作
 @AllArgsConstructor//生成有参构造
 @NoArgsConstructor//生成无参构造
 public class ServiceDescriptor {
-    private String clazz;
-    private String method;
-    private String returnType;
-    private String[] parameterTypes;
+    private String clazz; //类名称
+    private String method; //类中的方法
+    private String returnType; //方法的返回值
+    private String[] parameterTypes; //方法所需要的参数
 
     /**
      * 将类和方法转换成ServiceDescriptor类型
      * @param clazz 要转换的类
      * @param method 类中要转换的方法
-     * @return
+     * @return 返回clazz与method的服务描述
      */
     public static ServiceDescriptor from(Class clazz, Method method){
 
@@ -42,6 +43,10 @@ public class ServiceDescriptor {
 
     }
 
+    /**
+     * 因为再服务管理注册中会将其放到HashMap中所以要复写equal方法
+     *
+     */
     @Override
     public int hashCode() {
         return toString().hashCode();
@@ -52,11 +57,11 @@ public class ServiceDescriptor {
         if (this == obj){
             return true;
         }
-        if(obj==null || getClass()!=obj.getClass()){
+        if(obj==null || getClass()!=obj.getClass()){ //先比较类是否相同
             return false;
         }
         ServiceDescriptor that=(ServiceDescriptor) obj;
-        return this.toString().equals(that.toString());
+        return this.toString().equals(that.toString()); //再比较其String
     }
 
     @Override

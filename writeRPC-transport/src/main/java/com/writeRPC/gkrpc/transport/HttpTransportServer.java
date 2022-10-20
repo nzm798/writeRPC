@@ -13,13 +13,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+/**
+ * 服务端的网络传递模块
+ */
 @Slf4j
 public class HttpTransportServer implements TransportServer{
     private RequestHandler handler;
-    private Server server;
+    private Server server; //服务端的http服务
     public void init(int port, RequestHandler handler) {
         this.handler=handler;
-        this.server=new Server(port);
+        this.server=new Server(port); //赋值端口
 
         //servlet接受请求
         ServletContextHandler ctx=new ServletContextHandler();
@@ -58,7 +61,7 @@ public class HttpTransportServer implements TransportServer{
             if (handler!=null){
                 handler.onRequest(in,out);
             }
-            out.flush();
+            out.flush(); //用于清空缓存中的数据流
         }
     }
 }

@@ -6,6 +6,9 @@ package com.writeRPC.pkrpc;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+/**
+ * 服务提供者地址信息
+ */
 @Data
 @AllArgsConstructor
 public class Peer {

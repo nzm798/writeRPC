@@ -1,7 +1,6 @@
 package com.writeRPC.gkrpc.example;
 
 import com.writeRPC.gkrpc.client.RpcClient;
-import com.writeRPC.gkrpc.client.RpcClientConfig;
 
 public class Client {
     public static void main(String[] args){
